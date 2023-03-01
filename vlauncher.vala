@@ -81,7 +81,12 @@ public void launch() {
 }
 
 public class Window : Adw.ApplicationWindow {
-const string style = ".input { font-size: 200%; font-weight: 200; padding: 10px 10px;} .item { padding: 10px 5px; } .name { font-size: 120%; } .desc { font-size: 80%; }";
+string style = string.join("\n",
+                           ".input { font-size: 200%; font-weight: 200; padding: 10px 10px;}",
+                           ".item { padding: 10px 5px; }",
+                           ".name { font-size: 120%; }",
+                           ".desc { font-size: 80%; }",
+                           ".box { padding: 5px; }");
 
 Gtk.ListBox results;
 Gtk.ScrolledWindow scroll;
@@ -115,6 +120,7 @@ construct {
 	var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 	box.append(entry);
 	box.append(scroll);
+	box.get_style_context().add_class("box");
 
 	content = box;
 	title = "Vlauncher - Application Launcher";
